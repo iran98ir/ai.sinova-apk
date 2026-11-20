@@ -1,1 +1,956 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#3A1F18">
+
+<title>Sinova | دانلود اپلیکیشن</title>
+
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@v10.0.0/dist/font-face.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    min-height:100%;
+}
+
+body{
+    font-family:'Estedad','Vazirmatn',sans-serif;
+    background:#24130F;
+    color:#fff;
+    min-height:100dvh;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(
+            ellipse at 50% 5%,
+            rgba(241,135,77,.19),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 0% 65%,
+            rgba(244,157,108,.09),
+            transparent 45%
+        ),
+        linear-gradient(
+            155deg,
+            #3A1F18 0%,
+            #291611 48%,
+            #1C100D 100%
+        );
+    z-index:0;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.13;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+    z-index:1;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:43vh;
+    min-height:300px;
+    max-height:440px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    z-index:2;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:310px;
+    height:310px;
+    border-radius:50%;
+    background:rgba(241,135,77,.15);
+    filter:blur(65px);
+    animation:glow 5s ease-in-out infinite alternate;
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    width:210px;
+    height:210px;
+    border:1px solid rgba(244,157,108,.12);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 35px rgba(244,157,108,.025),
+        0 0 0 70px rgba(244,157,108,.02);
+    animation:orbit 25s linear infinite;
+}
+
+@keyframes glow{
+    from{
+        transform:scale(.85);
+        opacity:.65;
+    }
+    to{
+        transform:scale(1.2);
+        opacity:1;
+    }
+}
+
+@keyframes orbit{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+.icon-frame{
+    position:relative;
+    width:142px;
+    height:142px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.icon-frame::before{
+    content:'';
+    position:absolute;
+    inset:-12px;
+    border:1px solid rgba(244,157,108,.25);
+    border-radius:42px;
+    transform:rotate(8deg);
+}
+
+.icon-frame::after{
+    content:'';
+    position:absolute;
+    inset:-22px;
+    border:1px solid rgba(244,157,108,.10);
+    border-radius:49px;
+    transform:rotate(-8deg);
+}
+
+.app-icon{
+    width:142px;
+    height:142px;
+    object-fit:cover;
+    border-radius:34px;
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.55),
+        0 0 65px rgba(241,135,77,.25),
+        inset 0 1px 0 rgba(255,255,255,.2);
+    animation:float 4.5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-9px);
+    }
+}
+
+.hero-label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#F49D6C;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    direction:ltr;
+    opacity:.9;
+}
+
+.hero-label::before,
+.hero-label::after{
+    content:'';
+    width:22px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#F49D6C);
+}
+
+.hero-label::after{
+    transform:rotate(180deg);
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.content{
+    position:relative;
+    z-index:4;
+    width:100%;
+    max-width:470px;
+    margin:-35px auto 0;
+    padding:0 20px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            150deg,
+            rgba(83,48,37,.91),
+            rgba(45,26,21,.96)
+        );
+    border:1px solid rgba(244,157,108,.19);
+    border-radius:29px;
+    padding:30px 24px 25px;
+    text-align:center;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.07);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    animation:rise .8s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:15%;
+    right:15%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(244,157,108,.8),
+        transparent
+    );
+}
+
+.card::after{
+    content:'S';
+    position:absolute;
+    top:65px;
+    right:-35px;
+    font-family:Arial,sans-serif;
+    font-size:220px;
+    font-weight:900;
+    color:rgba(244,157,108,.025);
+    pointer-events:none;
+}
+
+@keyframes rise{
+    from{
+        opacity:0;
+        transform:translateY(28px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.badge{
+    position:relative;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 15px;
+    border-radius:50px;
+    background:rgba(244,157,108,.10);
+    border:1px solid rgba(244,157,108,.23);
+    color:#F8B68F;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:19px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#F49D6C;
+    box-shadow:0 0 0 4px rgba(244,157,108,.13);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.35;
+        box-shadow:0 0 0 7px rgba(244,157,108,.04);
+    }
+}
+
+/* =========================
+   TITLE
+========================= */
+
+h1{
+    position:relative;
+    z-index:2;
+    font-family:'Estedad',sans-serif;
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-1px;
+    line-height:1.35;
+    margin-bottom:7px;
+    color:#FFF1E8;
+}
+
+h1 span{
+    color:#F49D6C;
+}
+
+.tagline{
+    position:relative;
+    z-index:2;
+    color:#C4A99C;
+    font-size:13px;
+    line-height:2;
+    font-weight:500;
+    margin-bottom:24px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info-row{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    align-items:center;
+    padding:17px 0;
+    border-top:1px solid rgba(255,255,255,.075);
+    border-bottom:1px solid rgba(255,255,255,.075);
+    margin-bottom:21px;
+}
+
+.info-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    min-width:0;
+}
+
+.info-item:not(:last-child){
+    border-left:1px solid rgba(255,255,255,.08);
+}
+
+.info-icon{
+    width:29px;
+    height:29px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#F49D6C;
+    margin-bottom:2px;
+}
+
+.info-icon svg{
+    width:21px;
+    height:21px;
+}
+
+.info-value{
+    font-size:14px;
+    font-weight:800;
+    color:#FFF0E6;
+    direction:ltr;
+}
+
+.info-label{
+    font-size:10px;
+    font-weight:600;
+    color:#A98C7D;
+}
+
+/* =========================
+   DOWNLOAD NOTICE
+========================= */
+
+.notice{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    text-align:right;
+    padding:13px 13px;
+    border-radius:14px;
+    background:rgba(244,157,108,.07);
+    border:1px solid rgba(244,157,108,.17);
+    margin-bottom:20px;
+}
+
+.notice-icon{
+    flex-shrink:0;
+    width:33px;
+    height:33px;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(244,157,108,.13);
+    color:#F49D6C;
+}
+
+.notice-icon svg{
+    width:19px;
+    height:19px;
+}
+
+.notice-text{
+    color:#D8BBAA;
+    font-size:11px;
+    line-height:1.9;
+    font-weight:500;
+}
+
+.notice-text b{
+    color:#F6AD80;
+    font-weight:800;
+}
+
+/* =========================
+   DOWNLOAD BUTTON
+========================= */
+
+.download-btn{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:11px;
+    width:100%;
+    min-height:57px;
+    padding:15px 18px;
+    border-radius:15px;
+    background:linear-gradient(
+        120deg,
+        #F49D6C 0%,
+        #F1874D 55%,
+        #DE713A 100%
+    );
+    color:#351B12;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:900;
+    box-shadow:
+        0 13px 30px rgba(241,135,77,.24),
+        inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .2s,box-shadow .2s,opacity .2s;
+    overflow:hidden;
+}
+
+.download-btn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:50px;
+    right:-70px;
+    transform:skewX(-20deg);
+    background:rgba(255,255,255,.22);
+    transition:right .65s ease;
+}
+
+.download-btn:hover::before{
+    right:110%;
+}
+
+.download-btn:active{
+    transform:scale(.975);
+    box-shadow:0 5px 15px rgba(241,135,77,.2);
+}
+
+.download-btn svg{
+    width:21px;
+    height:21px;
+    flex-shrink:0;
+}
+
+.download-btn.loading{
+    opacity:.75;
+    pointer-events:none;
+}
+
+.download-btn.loading svg{
+    animation:downloadPulse 1s infinite;
+}
+
+@keyframes downloadPulse{
+    50%{
+        transform:translateY(3px);
+    }
+}
+
+/* =========================
+   VERSION
+========================= */
+
+.version{
+    position:relative;
+    z-index:2;
+    margin-top:14px;
+    font-size:11px;
+    color:#A98C7D;
+    font-weight:600;
+}
+
+.version b{
+    color:#F49D6C;
+    font-weight:800;
+    direction:ltr;
+    display:inline-block;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    padding:22px 0 28px;
+    color:#87695C;
+    font-size:10px;
+    font-weight:600;
+    line-height:2;
+}
+
+.footer-brand{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    color:#D99B78;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.footer-brand svg{
+    width:15px;
+    height:15px;
+}
+
+/* =========================
+   SMALL SCREENS
+========================= */
+
+@media(max-height:720px){
+    .hero{
+        height:35vh;
+        min-height:235px;
+    }
+
+    .icon-frame,
+    .app-icon{
+        width:112px;
+        height:112px;
+    }
+
+    .icon-frame::before{
+        border-radius:34px;
+    }
+
+    .icon-frame::after{
+        border-radius:40px;
+    }
+
+    .hero-content{
+        gap:16px;
+    }
+
+    .card{
+        padding:25px 20px 21px;
+    }
+
+    h1{
+        font-size:35px;
+    }
+
+    .tagline{
+        margin-bottom:18px;
+    }
+
+    .info-row{
+        padding:13px 0;
+        margin-bottom:16px;
+    }
+
+    .notice{
+        margin-bottom:15px;
+    }
+}
+
+@media(max-width:360px){
+    .content{
+        padding:0 13px;
+    }
+
+    .card{
+        padding:24px 17px 20px;
+    }
+
+    h1{
+        font-size:35px;
+    }
+
+    .info-value{
+        font-size:12px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="icon-frame">
+            <img
+                src="icon.png"
+                alt="Sinova"
+                class="app-icon"
+                id="appIcon"
+            >
+        </div>
+
+        <div class="hero-label">
+            SINOVA APPLICATION
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN CONTENT -->
+
+<main class="content">
+
+    <section class="card">
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            نسخه جدید آماده دریافت است
+        </div>
+
+        <h1>
+            سینوا <span>Sinova</span>
+        </h1>
+
+        <p class="tagline">
+            تجربه‌ای متفاوت، در دسترس شما
+        </p>
+
+
+        <!-- APPLICATION INFORMATION -->
+
+        <div class="info-row">
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3v12"/>
+                        <path d="m7 10 5 5 5-5"/>
+                        <path d="M5 19v2h14v-2"/>
+                    </svg>
+                </div>
+
+                <span class="info-value">APK</span>
+                <span class="info-label">فرمت نصب</span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="3"/>
+                        <path d="M10 18h4"/>
+                    </svg>
+                </div>
+
+                <span class="info-value">Android</span>
+                <span class="info-label">سیستم عامل</span>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 7v5l3 2"/>
+                    </svg>
+                </div>
+
+                <span class="info-value">08.12.43</span>
+                <span class="info-label">شماره نسخه</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOTICE -->
+
+        <div class="notice">
+
+            <div class="notice-icon">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+            </div>
+
+            <p class="notice-text">
+                برای دریافت اپلیکیشن، دکمه دانلود را انتخاب کنید.
+                فایل نصب از <b>مخزن رسمی انتشار سینوا</b> دریافت می‌شود.
+            </p>
+
+        </div>
+
+
+        <!-- DOWNLOAD -->
+
+        <a
+            href="https://github.com/iran98ir/ai.sinova-apk/releases/latest"
+            class="download-btn loading"
+            id="downloadBtn"
+            rel="noopener"
+        >
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.3"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"/>
+                <path d="m7 10 5 5 5-5"/>
+                <path d="M5 21h14"/>
+            </svg>
+
+            <span id="downloadText">در حال آماده‌سازی دانلود...</span>
+
+        </a>
+
+
+        <div class="version">
+            آخرین نسخه:
+            <b>08.12.43</b>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20"/>
+                <path d="M12 7c-5-5-9-1-9-1 0 5 4 8 9 7"/>
+                <path d="M12 13c5-5 9-1 9-1 0 5-4 8-9 7"/>
+            </svg>
+
+            SINOVA
+
+        </div>
+
+        <p>
+            ساخته شده برای تجربه‌ای بهتر
+        </p>
+
+    </footer>
+
+</main>
+
+
+<!-- DOWNLOAD LOGIC -->
+
+<script>
+(function(){
+
+    'use strict';
+
+    var repo = 'iran98ir/ai.sinova-apk';
+
+    var fallback =
+        'https://github.com/' + repo + '/releases/latest';
+
+    var btn = document.getElementById('downloadBtn');
+
+    var btnText = document.getElementById('downloadText');
+
+    var releaseApi =
+        'https://api.github.com/repos/' + repo + '/releases/latest';
+
+
+    // دریافت مستقیم APK از آخرین انتشار گیت‌هاب
+
+    fetch(releaseApi,{
+        method:'GET',
+        headers:{
+            'Accept':'application/vnd.github+json'
+        },
+        cache:'no-store'
+    })
+
+    .then(function(response){
+
+        if(!response.ok){
+            throw new Error('Release unavailable');
+        }
+
+        return response.json();
+
+    })
+
+    .then(function(data){
+
+        var assets = data.assets || [];
+
+        var apk = assets.find(function(asset){
+
+            return /\.apk$/i.test(asset.name);
+
+        });
+
+        if(!apk){
+            throw new Error('APK not found');
+        }
+
+        btn.href = apk.browser_download_url;
+
+        btnText.textContent = 'دانلود و نصب سینوا';
+
+        btn.classList.remove('loading');
+
+    })
+
+    .catch(function(){
+
+        // در صورت خطای API، صفحه آخرین انتشار باز می‌شود
+
+        btn.href = fallback;
+
+        btnText.textContent = 'دریافت اپلیکیشن سینوا';
+
+        btn.classList.remove('loading');
+
+    });
+
+
+    // اگر آیکون بارگذاری نشد، جایگزین گرافیکی نمایش داده شود
+
+    var img = document.getElementById('appIcon');
+
+    img.onerror = function(){
+
+        img.onerror = null;
+
+        var fallbackSvg =
+            '<svg class="app-icon" viewBox="0 0 200 200" ' +
+            'xmlns="http://www.w3.org/2000/svg">' +
+
+            '<defs>' +
+            '<linearGradient id="sinovaBg" x1="0" y1="0" x2="1" y2="1">' +
+            '<stop offset="0%" stop-color="#F49D6C"/>' +
+            '<stop offset="100%" stop-color="#3A1F18"/>' +
+            '</linearGradient>' +
+            '</defs>' +
+
+            '<rect width="200" height="200" rx="38" fill="url(#sinovaBg)"/>' +
+
+            '<text x="100" y="125" text-anchor="middle" ' +
+            'font-family="Arial" font-size="88" font-weight="900" ' +
+            'fill="#FFF1E8">S</text>' +
+
+            '</svg>';
+
+        img.outerHTML = fallbackSvg;
+
+    };
+
+})();
+</script>
+
+</body>
+</html>
